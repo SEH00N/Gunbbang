@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Unity.Services.Core;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace GB.Networks
         }
 
         // Call this method when game starts
-        public async void InitNetworkAsync()
+        public async Task InitNetworkAsync()
         {
             await UnityServices.InitializeAsync();
         }

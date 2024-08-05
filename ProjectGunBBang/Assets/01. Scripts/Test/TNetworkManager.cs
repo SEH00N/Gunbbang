@@ -10,7 +10,7 @@ namespace GB.Tests
 
         private async void Start()
         {
-            ClientManager.Instance.InitNetworkAsync();
+            await ClientManager.Instance.InitNetworkAsync();
             await Authenticator.DoAuthAsync();
         }
 
