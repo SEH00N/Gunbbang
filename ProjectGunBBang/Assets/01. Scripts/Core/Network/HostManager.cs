@@ -58,7 +58,7 @@ namespace GB.Networks
             string joinCode = await Relay.Instance.GetJoinCodeAsync(room.AllocationId);
             GUIUtility.systemCopyBuffer = joinCode;
 
-            Debug.Log($"Room Created | Code : {JoinCode}");
+            Debug.Log($"Room Created | Code : {joinCode}");
 
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
             RelayServerData relayServer = new RelayServerData(room, "dtls");
