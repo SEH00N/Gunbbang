@@ -13,7 +13,7 @@ namespace GB.Characters
 
         [Tooltip("Gravity")]
         [SerializeField] bool useGravity = true;
-        public bool IsGround = false;
+        public bool IsGround { get; private set; } = false;
 
         [Space(15f)]
         [SerializeField] float gravityScale = 1f;
@@ -37,22 +37,25 @@ namespace GB.Characters
 
         private void FixedUpdate()
         {
+            if(Active == false || IsOwner == false)
+                return;
+
             if(useGravity)
                 CalculateGravity();
+            characterController.Move(Vector3.up * (verticalVelocity * Time.fixedDeltaTime));
 
-            bool shouldMove = moveDirection.sqrMagnitude > 0;
-            Vector2 planeVelocity = Vector3.zero;
+            bool shouldMove = moveDirection.sqrMagnitude > 0.1f;
 
             if(shouldMove)
             {
                 currentSpeed += acceleration * Time.fixedDeltaTime;
                 currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
 
-                planeVelocity = currentSpeed * moveDirection;
+                Vector3 planeVelocity = currentSpeed * moveDirection;
+                Vector3 velocity = planeVelocity.x * transform.right + planeVelocity.y * transform.forward;
+                characterController.Move(velocity * Time.fixedDeltaTime);
             }
 
-            Vector3 velocity = new Vector3(planeVelocity.x, verticalVelocity, planeVelocity.y);
-            characterController.Move(velocity * Time.fixedDeltaTime);
         }
 
         private void CalculateGravity()
