@@ -1,3 +1,4 @@
+using Cinemachine;
 using GB.Characters;
 using Unity.Netcode;
 using UnityEngine;
@@ -7,11 +8,19 @@ namespace GB.Tests
 {
     public class TPlayer : NetworkBehaviour
     {
+        [SerializeField] CinemachineVirtualCamera playerVCam = null;
         private CharacterController controller;
 
         private void Awake()
         {
             controller = GetComponent<CharacterController>();
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+            if (IsOwner)
+                playerVCam.Priority = 10;
         }
 
         private void Update()
