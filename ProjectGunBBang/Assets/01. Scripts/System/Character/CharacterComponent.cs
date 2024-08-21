@@ -16,5 +16,10 @@ namespace GB.Characters
             this.controller = controller;
             Active = true;
         }
+
+        public virtual void Release()
+        {
+            
+        }
     }
 }

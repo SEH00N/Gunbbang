@@ -7,6 +7,7 @@ namespace GB.Weapons
     {
         [Tooltip("Generic Property")]
         public string weaponName;
+        public Weapon weaponPrefab = null;
         public Sprite weaponIcon;
 
         [Tooltip("Attack Property")]

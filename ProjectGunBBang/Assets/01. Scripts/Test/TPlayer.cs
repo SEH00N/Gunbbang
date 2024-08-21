@@ -5,7 +5,7 @@ using CharacterController = GB.Characters.CharacterController;
 
 namespace GB.Tests
 {
-    public class TMovement : NetworkBehaviour
+    public class TPlayer : NetworkBehaviour
     {
         private CharacterController controller;
 
