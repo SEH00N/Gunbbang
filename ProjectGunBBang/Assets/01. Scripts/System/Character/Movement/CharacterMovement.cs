@@ -6,12 +6,27 @@ namespace GB.Characters
     {
         private UnityEngine.CharacterController characterController = null;
 
+        [Tooltip("Movement")]
         [SerializeField] float maxSpeed = 10f;
         [SerializeField] float acceleration = 20f;
         private float currentSpeed = 0f;
+
+        [Tooltip("Gravity")]
+        [SerializeField] bool useGravity = true;
+        public bool IsGround = false;
+
+        [Space(15f)]
+        [SerializeField] float gravityScale = 1f;
+        [SerializeField, Range(0f, 50f)] float gravityScaleLimit = 30f;
+        private float gravityAccel = -9.81f;
+
+        [Space(15f)]
+        [SerializeField] float groundDistance = 0.5f;
+        [SerializeField] Transform footTransform = null;
+        [SerializeField] LayerMask groundLayer = 1 << 6;
         
-        private Vector3 moveDirection = Vector3.zero;
-        public Vector3 Velocity { get; private set; } = Vector3.zero;
+        private Vector2 moveDirection = Vector3.zero;
+        private float verticalVelocity = 0f;
 
         public override void Init(CharacterController controller)
         {
@@ -22,18 +37,39 @@ namespace GB.Characters
 
         private void FixedUpdate()
         {
+            if(useGravity)
+                CalculateGravity();
+
             bool shouldMove = moveDirection.sqrMagnitude > 0;
-            if(shouldMove == false)
-                return;
+            Vector2 planeVelocity = Vector3.zero;
 
-            currentSpeed += acceleration * Time.fixedDeltaTime;
-            currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+            if(shouldMove)
+            {
+                currentSpeed += acceleration * Time.fixedDeltaTime;
+                currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
 
-            Velocity = currentSpeed * moveDirection;
-            characterController.Move(Velocity * Time.fixedDeltaTime);
+                planeVelocity = currentSpeed * moveDirection;
+            }
+
+            Vector3 velocity = new Vector3(planeVelocity.x, verticalVelocity, planeVelocity.y);
+            characterController.Move(velocity * Time.fixedDeltaTime);
         }
 
-        public void SetDirection(Vector3 direction)
+        private void CalculateGravity()
+        {
+            IsGround = Physics.Raycast(footTransform.position, Vector3.down, groundDistance, groundLayer);
+            if(IsGround && verticalVelocity < gravityAccel)
+            {
+                verticalVelocity = gravityAccel;
+            }
+            else
+            {
+                verticalVelocity += gravityAccel * gravityScale * Time.fixedDeltaTime;
+                verticalVelocity = Mathf.Clamp(verticalVelocity, -gravityScaleLimit, gravityScaleLimit);
+            }
+        }
+
+        public void SetDirection(Vector2 direction)
         {
             direction = direction.normalized;
             
@@ -52,9 +88,9 @@ namespace GB.Characters
             moveDirection = direction;
         }
 
-        public void AddDirection(Vector3 direction)
+        public void SetVerticalVelocity(float velocity)
         {
-            SetDirection(moveDirection + direction);
+            verticalVelocity = velocity;
         }
     }
 }
