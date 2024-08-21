@@ -1,17 +1,24 @@
 using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace GB.Characters
 {
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : NetworkBehaviour
     {
         [SerializeField] List<CharacterComponent> moduleList = new List<CharacterComponent>();
         [SerializeField] List<CharacterComponent> componentList = new List<CharacterComponent>();
 
         private Dictionary<Type, CharacterComponent> components = new Dictionary<Type, CharacterComponent>();
 
-        private void Awake()
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+            Init();
+        }
+
+        protected virtual void Init()
         {
             moduleList.ForEach(RegisterComponent);
             componentList.ForEach(RegisterComponent);
@@ -31,5 +38,7 @@ namespace GB.Characters
                     break;
             }
         }
+
+        public T GetCharacterComponent<T>() where T : CharacterComponent => components[typeof(T)] as T;
     }
 }
