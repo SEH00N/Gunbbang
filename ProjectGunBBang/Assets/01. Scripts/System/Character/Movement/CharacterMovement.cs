@@ -46,7 +46,7 @@ namespace GB.Characters
                 float theta = Mathf.Acos(Vector3.Dot(moveDirection, direction)) * Mathf.Rad2Deg;
                 bool directionReversed = theta > 90f;
                 if(directionReversed)
-                    currentSpeed = 0f;
+                    currentSpeed -= currentSpeed * (2 / 3);
             }
 
             moveDirection = direction;

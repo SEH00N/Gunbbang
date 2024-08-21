@@ -31,5 +31,7 @@ namespace GB.Characters
                     break;
             }
         }
+
+        public T GetCharacterComponent<T>() where T : CharacterComponent => components[typeof(T)] as T;
     }
 }
