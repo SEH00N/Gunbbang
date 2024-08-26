@@ -69,13 +69,26 @@ namespace GB.Weapons
         protected virtual void HandleWeaponHold()
         {
             gameObject.SetActive(true);
+            ChangeLayer(transform.Find("Visual"), 7);
         }
 
         protected virtual void HandleWeaponUnhold()
         {
             gameObject.SetActive(false);
+            ChangeLayer(transform.Find("Visual"), 0);
         }
-        
+
         protected abstract void OnWeaponActived();
+
+
+        private void ChangeLayer(Transform root, int layer)
+        {
+            if (root == null)
+                return;
+
+            root.gameObject.layer = layer;
+            foreach (Transform trm in root)
+                ChangeLayer(trm, layer);
+        }
     }
 }

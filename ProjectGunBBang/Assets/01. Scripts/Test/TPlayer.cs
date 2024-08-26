@@ -5,25 +5,32 @@ using GB.Players;
 using GB.Weapons;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace GB.Tests
 {
     public class TPlayer : NetworkBehaviour
     {
         [SerializeField] WeaponDataSO[] weapons = null;
+        [SerializeField] Camera overlayCamera = null;
         [SerializeField] CinemachineVirtualCamera playerVCam = null;
         private EntityController controller;
 
         private void Awake()
         {
             controller = GetComponent<EntityController>();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
             if (IsOwner)
-                playerVCam.Priority = 10;            
+            {
+                playerVCam.Priority = 10;
+                Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(overlayCamera);
+            }
         }
 
         private void Update()

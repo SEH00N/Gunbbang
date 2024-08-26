@@ -34,6 +34,9 @@ namespace GB.Weapons
             if(cameraTransform == null)
                 return;
 
+            if (Camera.current.transform != cameraTransform)
+                return;
+
             Gizmos.color = Color.red;
             bool isHit = Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit, float.MaxValue, WeaponData.targetLayer);
             if(isHit)
