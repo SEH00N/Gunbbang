@@ -13,7 +13,7 @@ namespace GB.Weapons
         [SerializeField] NetworkEvent onActivedEvent = null;
         [SerializeField] NetworkEvent onHoldEvent = null;
         [SerializeField] NetworkEvent onUnholdEvent = null;
-        private NetworkObject owner = null;
+        protected NetworkObject owner = null;
 
         public bool IsCooldown => timer > 0;
         private float timer = 0f;
@@ -30,7 +30,7 @@ namespace GB.Weapons
             onHoldEvent.Register(owner);
 
             onUnholdEvent = new NetworkEvent($"{WeaponData.name}Unhold");
-            onHoldEvent.AddListener(HandleWeaponUnhold);
+            onUnholdEvent.AddListener(HandleWeaponUnhold);
             onUnholdEvent.Register(owner);
         }
 

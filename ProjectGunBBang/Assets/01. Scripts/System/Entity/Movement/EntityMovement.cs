@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace GB.Characters
+namespace GB.Entities.Components
 {
-    public class CharacterMovement : CharacterComponent
+    public class EntityMovement : EntityComponent
     {
-        private UnityEngine.CharacterController characterController = null;
+        private CharacterController characterController = null;
 
         [Tooltip("Movement")]
         [SerializeField] float maxSpeed = 10f;
@@ -28,11 +28,11 @@ namespace GB.Characters
         private Vector2 moveDirection = Vector3.zero;
         private float verticalVelocity = 0f;
 
-        public override void Init(CharacterController controller)
+        public override void Init(EntityController controller)
         {
             base.Init(controller);
 
-            characterController = GetComponent<UnityEngine.CharacterController>();
+            characterController = GetComponent<CharacterController>();
         }
 
         private void FixedUpdate()

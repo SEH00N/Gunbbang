@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace GB.Characters
+namespace GB.Entities
 {
-    public class CharacterController : NetworkBehaviour
+    public class EntityController : NetworkBehaviour
     {
-        [SerializeField] List<CharacterComponent> moduleList = new List<CharacterComponent>();
-        [SerializeField] List<CharacterComponent> componentList = new List<CharacterComponent>();
+        [SerializeField] List<EntityComponent> moduleList = new List<EntityComponent>();
+        [SerializeField] List<EntityComponent> componentList = new List<EntityComponent>();
 
-        private Dictionary<Type, CharacterComponent> components = new Dictionary<Type, CharacterComponent>();
+        private Dictionary<Type, EntityComponent> components = new Dictionary<Type, EntityComponent>();
 
         public override void OnNetworkSpawn()
         {
@@ -24,7 +24,7 @@ namespace GB.Characters
             componentList.ForEach(RegisterComponent);
         }
 
-        private void RegisterComponent(CharacterComponent component)
+        private void RegisterComponent(EntityComponent component)
         {
             component.Init(this);
             
@@ -34,11 +34,11 @@ namespace GB.Characters
                 components.Add(type, component);
                 type = type.BaseType;
 
-                if (type == typeof(CharacterComponent))
+                if (type == typeof(EntityComponent))
                     break;
             }
         }
 
-        public T GetCharacterComponent<T>() where T : CharacterComponent => components[typeof(T)] as T;
+        public T GetEntityComponent<T>() where T : EntityComponent => components[typeof(T)] as T;
     }
 }

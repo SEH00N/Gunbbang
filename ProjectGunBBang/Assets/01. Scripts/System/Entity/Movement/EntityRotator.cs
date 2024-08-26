@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace GB.Characters
+namespace GB.Entities.Components
 {
-    public class CharacterRotator : CharacterComponent
+    public class EntityRotator : EntityComponent
     {
         [SerializeField] Transform yawTransform = null; // y rotation
         [SerializeField] Transform pitchTransform = null; // x rotation
@@ -12,7 +12,7 @@ namespace GB.Characters
         [SerializeField] float pitchMax = 50;
         private float currentPitch = 0f;
 
-        public override void Init(CharacterController controller)
+        public override void Init(EntityController controller)
         {
             base.Init(controller);
 
