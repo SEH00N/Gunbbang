@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GB.Weapons
 {
-    public class WeaponKnife : Weapon
+    public class MeleeWeapon : Weapon
     {
         protected override void OnWeaponActived()
         {
