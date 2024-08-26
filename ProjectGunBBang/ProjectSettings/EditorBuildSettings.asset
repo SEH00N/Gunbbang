@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/00. Scenes/SEH00N/Bootstrap.unity
+    guid: 24fc066b846a0499ea0d2ed1e31704ae
+  - enabled: 1
     path: Assets/00. Scenes/HY30K/TestHY30K.unity
     guid: b3531c971b06cc849b71d059df83d844
   - enabled: 1

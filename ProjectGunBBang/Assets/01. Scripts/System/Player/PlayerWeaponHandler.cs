@@ -1,13 +1,15 @@
 using System.Collections.Generic;
-using GB.Characters;
+using GB.Entities;
 using GB.Extensions;
 using GB.Weapons;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GB.Players
 {
-    public class PlayerWeaponHandler : CharacterComponent
+    public class PlayerWeaponHandler : EntityComponent
     {
+        [SerializeField] UnityEvent onFailedToActiveEvent = null;
         [SerializeField] Transform weaponContainer = null;
         private List<Weapon> weapons = new List<Weapon>();
 
@@ -18,6 +20,7 @@ namespace GB.Players
             weaponDatas.ForEach(i => {
                 Weapon weapon = Instantiate(i.weaponPrefab, weaponContainer);
                 weapon.Init(controller.NetworkObject);
+                weapon.Unhold();
                 weapons.Add(weapon);
             });
         }
@@ -34,18 +37,26 @@ namespace GB.Players
         public void ActiveWeapon()
         {
             if(currentWeapon.IsCooldown)
+            {
+                onFailedToActiveEvent?.Invoke();
                 return;
+            }
 
             currentWeapon.ActiveWeapon();
         }
 
         public void ChangeWeapon(int index)
         {
-            if(weapons.Count >= index || index < 0)
+            if(weapons.Count <= index || index < 0)
                 return;
 
             currentWeapon?.Unhold();
-            currentWeapon = weapons[index];
+
+            if(currentWeapon == weapons[index])
+                currentWeapon = null;
+            else
+                currentWeapon = weapons[index];
+            
             currentWeapon?.Hold();
         }
     }

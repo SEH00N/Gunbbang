@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
 
-namespace GB.Characters
+namespace GB.Entities
 {
-    public abstract class CharacterComponent : MonoBehaviour
+    public abstract class EntityComponent : MonoBehaviour
     {
         public virtual Type ComponentType => GetType();
-        protected CharacterController controller = null;
+        protected EntityController controller = null;
 
         public bool Active { get; protected set; } = false;
         public bool IsOwner => controller.IsOwner;
 
-        public virtual void Init(CharacterController controller)
+        public virtual void Init(EntityController controller)
         {
             this.controller = controller;
             Active = true;

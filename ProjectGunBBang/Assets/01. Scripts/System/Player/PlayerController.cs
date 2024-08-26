@@ -1,9 +1,9 @@
 
-using GB.Characters;
+using GB.Entities;
 
 namespace GB.Players
 {
-    public class PlayerController : CharacterController
+    public class PlayerController : EntityController
     {
 
     }
