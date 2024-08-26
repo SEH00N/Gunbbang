@@ -1176,7 +1176,7 @@ PrefabInstance:
     - target: {fileID: 5786097810451525583, guid: 260ff1508afea5241b6511d8fbe92201,
         type: 3}
       propertyPath: m_Name
-      value: Weapon_02
+      value: M4
       objectReference: {fileID: 0}
     - target: {fileID: 5786097810451525583, guid: 260ff1508afea5241b6511d8fbe92201,
         type: 3}
@@ -1335,12 +1335,12 @@ PrefabInstance:
     - target: {fileID: 6440599648175510709, guid: c1ab9abedc9d80f4a9109fe99b4ea8d4,
         type: 3}
       propertyPath: m_Name
-      value: Knife_01
+      value: Knife
       objectReference: {fileID: 0}
     - target: {fileID: 6440599648175510709, guid: c1ab9abedc9d80f4a9109fe99b4ea8d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1364,12 +1364,12 @@ PrefabInstance:
     - target: {fileID: 4965438261709640327, guid: a35b8c32acba1334b9b31dfe8cdbc9be,
         type: 3}
       propertyPath: m_Name
-      value: Weapon_01
+      value: Glock
       objectReference: {fileID: 0}
     - target: {fileID: 4965438261709640327, guid: a35b8c32acba1334b9b31dfe8cdbc9be,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be,
         type: 3}
