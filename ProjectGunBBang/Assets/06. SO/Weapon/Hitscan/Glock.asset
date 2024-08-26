@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 033ef21aac3ba4ad9ae6b9d82754ef16, type: 3}
-  m_Name: DesertEagle
+  m_Name: Glock
   m_EditorClassIdentifier: 
-  weaponName: DesertEagle
+  weaponName: Glock
   weaponPrefab: {fileID: 6955089710013555385, guid: f85ec7ad082be40bb947c549733e30bd,
     type: 3}
   weaponIcon: {fileID: 0}
