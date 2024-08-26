@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 6614227122162838531}
   - component: {fileID: 5097666533069124664}
   - component: {fileID: 2435343248027516716}
+  - component: {fileID: 1449165358993266453}
   - component: {fileID: 1735214909201937320}
   - component: {fileID: 2852850680471439697}
   - component: {fileID: 8303818765633060163}
@@ -382,10 +383,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55693be76441d4dd0b025e90a65346ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 11400000, guid: 38e3f70829f9b4f1f99a71c376f8dfd3, type: 2}
   moduleList:
   - {fileID: 6614227122162838531}
   - {fileID: 5097666533069124664}
   - {fileID: 2435343248027516716}
+  - {fileID: 1449165358993266453}
   componentList: []
 --- !u!114 &6614227122162838531
 MonoBehaviour:
@@ -437,7 +441,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe00c60f9f1e843b1ba321eca0abbb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onFailedToActiveEvent:
+    m_PersistentCalls:
+      m_Calls: []
   weaponContainer: {fileID: 7310148633879172372}
+--- !u!114 &1449165358993266453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619533124209937909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3799a5e314af84927aa8e4019e875232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDamagedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onHealEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeadEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1735214909201937320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45693d20b67d54af2943edd230e5d8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 11400000, guid: 38e3f70829f9b4f1f99a71c376f8dfd3, type: 2}
+  playerVCam: {fileID: 1058989968418249792}
 --- !u!143 &2852850680471439697
 CharacterController:
   m_ObjectHideFlags: 0

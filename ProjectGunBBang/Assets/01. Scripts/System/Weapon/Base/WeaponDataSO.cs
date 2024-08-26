@@ -13,5 +13,6 @@ namespace GB.Weapons
         [Tooltip("Attack Property")]
         public float cooldown;
         public float damage;
+        public LayerMask targetLayer;
     }
 }

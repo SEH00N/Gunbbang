@@ -22,14 +22,14 @@ namespace GB.NetworkEvents
         #region Alert
         public void AlertEvent(NetworkEventPacket packet) => AlertEventServerRpc(packet);
 
-        [ServerRpc (RequireOwnership = false)]
+        [ServerRpc(RequireOwnership = false)]
         private void AlertEventServerRpc(NetworkEventPacket packet) => CallEvent(packet);
         #endregion
 
         #region Broadcast
         public void BroadcastEvent(NetworkEventPacket packet) => BroadcastEventServerRpc(packet);
         
-        [ServerRpc (RequireOwnership = false)]
+        [ServerRpc(RequireOwnership = false)]
         private void BroadcastEventServerRpc(NetworkEventPacket packet) => BroadcastEventClientRpc(packet);
         
         [ClientRpc]

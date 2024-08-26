@@ -183,34 +183,28 @@ namespace GB.NetworkEvents
 
     public class AttackParams : NetworkEventParams, IConvertible<AttackParams>
     {
-        protected override ushort Size => sizeof(ulong) + sizeof(float) + sizeof(float) * 3 * 3 + sizeof(int);
+        protected override ushort Size => sizeof(ulong) + sizeof(float) + sizeof(float) * 3 * 2;
         public ulong AttackerID;
-        public int EffectType;
         public float Damage;
         public Vector3 Point;
-        public Vector3 Dir;
         public Vector3 Normal;
 
         public AttackParams Convert() => this;
 
         public AttackParams() { }
-        public AttackParams(ulong attackerID, int effectType, float damage, Vector3 point, Vector3 dir, Vector3 normal) 
+        public AttackParams(ulong attackerID, float damage, Vector3 point, Vector3 normal) 
         {
             AttackerID = attackerID;
             Damage = damage;
             Point = point;
-            Dir = dir;
             Normal = normal;
-            EffectType = effectType;
         }
 
         protected override void Deserialize(FastBufferReader reader) 
         { 
             reader.ReadValue(out AttackerID);
             reader.ReadValue(out Damage);
-            reader.ReadValue(out EffectType);
             reader.ReadValue(out Point);
-            reader.ReadValue(out Dir);
             reader.ReadValue(out Normal);
         }
 
@@ -218,9 +212,7 @@ namespace GB.NetworkEvents
         {
             writer.WriteValue(AttackerID);
             writer.WriteValue(Damage);
-            writer.WriteValue(EffectType);
             writer.WriteValue(Point);
-            writer.WriteValue(Dir);
             writer.WriteValue(Normal);
         }
     }
