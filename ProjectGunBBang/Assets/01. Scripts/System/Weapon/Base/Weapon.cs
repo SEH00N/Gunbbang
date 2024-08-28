@@ -21,15 +21,15 @@ namespace GB.Weapons
         public virtual void Init(NetworkObject owner)
         {
             this.owner = owner;
-
-            onActivedEvent = new NetworkEvent($"{WeaponData.name}Actived");
+            
+            onActivedEvent.Init($"{WeaponData.name}Actived");
             onActivedEvent.Register(owner);
 
-            onHoldEvent = new NetworkEvent($"{WeaponData.name}Hold");
+            onHoldEvent.Init($"{WeaponData.name}Hold");
             onHoldEvent.AddListener(HandleWeaponHold);
             onHoldEvent.Register(owner);
 
-            onUnholdEvent = new NetworkEvent($"{WeaponData.name}Unhold");
+            onUnholdEvent.Init($"{WeaponData.name}Unhold");
             onUnholdEvent.AddListener(HandleWeaponUnhold);
             onUnholdEvent.Register(owner);
         }

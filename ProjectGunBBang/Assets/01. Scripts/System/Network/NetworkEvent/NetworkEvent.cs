@@ -71,13 +71,18 @@ namespace GB.NetworkEvents
 
         public NetworkEvent(string key) : base()
         {
-            eventName = key;
-            eventID = NetworkEventTable.StringToHash(key);
+            Init(key);
         }
 
         ~NetworkEvent()
         {
             Unregister();
+        }
+
+        public void Init(string key)
+        { 
+            eventName = key;
+            eventID = NetworkEventTable.StringToHash(key);
         }
 
         public void Register(NetworkObject instance)
