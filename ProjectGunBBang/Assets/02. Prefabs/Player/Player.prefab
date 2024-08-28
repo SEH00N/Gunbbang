@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 11400000, guid: 38e3f70829f9b4f1f99a71c376f8dfd3, type: 2}
+  - {fileID: 11400000, guid: d11aa6f10aee7421cafec184eb159bdf, type: 2}
   overlayCamera: {fileID: 5476532653644394179}
   playerVCam: {fileID: 187356078049856179}
 --- !u!143 &2852850680471439697

@@ -55,8 +55,11 @@ namespace GB.Tests
             if(Input.GetKeyDown(KeyCode.Alpha0))
                 controller.GetEntityComponent<PlayerWeaponHandler>().SetWeaponTable(weapons);
             
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-                controller.GetEntityComponent<PlayerWeaponHandler>().ChangeWeapon(0);
+            for(int i = (int)KeyCode.Alpha1; i < (int)KeyCode.Alpha9; ++i)
+            {
+                if(Input.GetKeyDown((KeyCode)i))
+                    controller.GetEntityComponent<PlayerWeaponHandler>().ChangeWeapon(i - (int)KeyCode.Alpha1);
+            }
 
             if(Input.GetKeyDown(KeyCode.Mouse0))
                 controller.GetEntityComponent<PlayerWeaponHandler>().ActiveWeapon();
