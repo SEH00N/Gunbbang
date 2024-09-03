@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00. Scenes/SEH00N/Bootstrap.unity
-    guid: 24fc066b846a0499ea0d2ed1e31704ae
+    path: Assets/00. Scenes/Release/Bootstrap.unity
+    guid: b8e5c27817a364b1693544bc32942723
+  - enabled: 1
+    path: Assets/00. Scenes/Release/Intro.unity
+    guid: 97f3724b3355242ffb12b4e5cfe784ed
   - enabled: 1
     path: Assets/00. Scenes/HY30K/TestHY30K.unity
     guid: b3531c971b06cc849b71d059df83d844
-  - enabled: 1
-    path: Assets/00. Scenes/SEH00N/SEH00N.unity
-    guid: bccc64bfa3167407da36c5e3bb6064e0
-  - enabled: 1
+  - enabled: 0
     path: Assets/00. Scenes/HY30K/DemoMap.unity
     guid: 285cd37fa0812f84f819932c38988960
   m_configObjects: {}

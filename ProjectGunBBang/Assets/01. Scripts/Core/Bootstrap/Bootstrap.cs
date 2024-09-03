@@ -1,15 +1,15 @@
+using GB.Scenes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GB
 {
     public class Bootstrap : MonoBehaviour
     {
-        [SerializeField] string sceneName;
+        [SerializeField] SceneType sceneType = SceneType.Intro;
 
         private void Start()
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.Instance.LoadScene(sceneType);
         }
     }
 }
