@@ -193,8 +193,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 632629416}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -296,12 +295,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &632629416 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5476532653644394179, guid: a85dc4b28dd0543169d5faf3fc0685c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1501572844}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &718273789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,7 +316,7 @@ PrefabInstance:
     - target: {fileID: 3505627134690287528, guid: f85ec7ad082be40bb947c549733e30bd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.231
       objectReference: {fileID: 0}
     - target: {fileID: 3505627134690287528, guid: f85ec7ad082be40bb947c549733e30bd,
         type: 3}
@@ -368,7 +361,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7412762696642861886, guid: f85ec7ad082be40bb947c549733e30bd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 993750104}
   m_SourcePrefab: {fileID: 100100000, guid: f85ec7ad082be40bb947c549733e30bd, type: 3}
 --- !u!1 &873505263
 GameObject:
@@ -488,6 +485,25 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &993750102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7412762696642861886, guid: f85ec7ad082be40bb947c549733e30bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 718273789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &993750104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993750102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d915229f9811a0e4e823ed8f15c35841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopOnPlay: 0
 --- !u!1001 &1501572844
 PrefabInstance:
   m_ObjectHideFlags: 0
